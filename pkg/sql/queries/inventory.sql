@@ -5,7 +5,7 @@ LIMIT ? OFFSET ?;
 
 -- name: GetToysByIdentifier :many
 SELECT * FROM toys
-WHERE available >= sqlc.arg(min_available) AND identifier in sqlc.slice(ids);
+WHERE available >= sqlc.arg(min_available) AND identifier in sqlc.slice(idents);
 
 -- name: GetToyByID :one
 SELECT * FROM toys

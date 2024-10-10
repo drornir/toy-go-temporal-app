@@ -89,25 +89,25 @@ func (q *Queries) GetToys(ctx context.Context, arg GetToysParams) ([]Toy, error)
 
 const getToysByIdentifier = `-- name: GetToysByIdentifier :many
 SELECT id, identifier, available, json_data FROM toys
-WHERE available >= ?1 AND identifier in /*SLICE:ids*/?
+WHERE available >= ?1 AND identifier in /*SLICE:idents*/?
 `
 
 type GetToysByIdentifierParams struct {
 	MinAvailable int64    `db:"min_available" json:"min_available"`
-	Ids          []string `db:"ids" json:"ids"`
+	Idents       []string `db:"idents" json:"idents"`
 }
 
 func (q *Queries) GetToysByIdentifier(ctx context.Context, arg GetToysByIdentifierParams) ([]Toy, error) {
 	query := getToysByIdentifier
 	var queryParams []interface{}
 	queryParams = append(queryParams, arg.MinAvailable)
-	if len(arg.Ids) > 0 {
-		for _, v := range arg.Ids {
+	if len(arg.Idents) > 0 {
+		for _, v := range arg.Idents {
 			queryParams = append(queryParams, v)
 		}
-		query = strings.Replace(query, "/*SLICE:ids*/?", strings.Repeat(",?", len(arg.Ids))[1:], 1)
+		query = strings.Replace(query, "/*SLICE:idents*/?", strings.Repeat(",?", len(arg.Idents))[1:], 1)
 	} else {
-		query = strings.Replace(query, "/*SLICE:ids*/?", "NULL", 1)
+		query = strings.Replace(query, "/*SLICE:idents*/?", "NULL", 1)
 	}
 	rows, err := q.query(ctx, nil, query, queryParams...)
 	if err != nil {

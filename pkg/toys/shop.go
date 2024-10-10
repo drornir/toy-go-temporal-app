@@ -34,56 +34,67 @@ type Shop struct {
 	Repo *sqlc.Queries
 }
 
-func (self *Shop) Order(ctx context.Context, order ShopOrderForm) (OrderReciept, error) {
-	ids := make([]string, len(order.Items))
+func (self *Shop) ReserveOrderFromInventory(ctx context.Context, order ShopOrderForm) error {
+	idents := make([]string, len(order.Items))
 	for idx, item := range order.Items {
-		ids[idx] = item.ToyIdentifier
+		idents[idx] = item.ToyIdentifier
 	}
-	dbToys, err := self.Repo.GetToysByIdentifier(ctx, sqlc.GetToysByIdentifierParams{
-		Ids: ids,
-	})
+	dbToys, err := self.Repo.GetToysByIdentifier(ctx, sqlc.GetToysByIdentifierParams{Idents: idents})
 	if err != nil {
-		return OrderReciept{}, fmt.Errorf("getting toys by ids from db: %w", err)
+		return fmt.Errorf("getting toys by ids from db: %w", err)
 	}
+	idents = nil
 
 	itemsMap := make(map[string]string, len(dbToys))
-	decreasesToAmounts := make(map[string]int64, len(dbToys))
+	toyToAmount := make(map[string]int64, len(dbToys))
 	for _, dbToy := range dbToys {
 		for _, orderItem := range order.Items {
 			if dbToy.Identifier != orderItem.ToyIdentifier {
 				continue
 			}
 			if orderItem.Amount > uint(dbToy.Available) {
-				return OrderReciept{}, fmt.Errorf("can't fullfil order for toy %q: requested %d but only %d are available", orderItem.ToyIdentifier, orderItem.Amount, dbToy.Available)
+				return fmt.Errorf("can't fullfil order for toy %q: requested %d but only %d are available", orderItem.ToyIdentifier, orderItem.Amount, dbToy.Available)
 			}
 			itemAsJson, err := json.Marshal(orderItem)
 			if err != nil {
-				return OrderReciept{}, fmt.Errorf("serializing orderItem to JSON: for Go value %#v: error: %w", orderItem, err)
+				return fmt.Errorf("serializing orderItem to JSON: for Go value %#v: error: %w", orderItem, err)
 			}
 			itemsMap[dbToy.Identifier] = string(itemAsJson)
-			decreasesToAmounts[dbToy.Identifier] = int64(orderItem.Amount)
+			toyToAmount[dbToy.Identifier] = int64(orderItem.Amount)
 		}
 	}
 
-	//
 	tx, err := self.DB.BeginTx(ctx, nil)
 	if err != nil {
-		return OrderReciept{}, fmt.Errorf("begining db tansaction: %w", err)
+		return fmt.Errorf("begining db tansaction: %w", err)
 	}
 	repoWithTx := self.Repo.WithTx(tx)
 
-	for toyIdent, amount := range decreasesToAmounts {
+	for toyIdent, amount := range toyToAmount {
 		err := repoWithTx.TakeToyFromInventory(ctx, sqlc.TakeToyFromInventoryParams{
 			Amount:     amount,
 			Identifier: sql.NullString{Valid: true, String: toyIdent},
 		})
 		if err != nil {
 			err := errors.Join(err, tx.Rollback())
-			return OrderReciept{}, fmt.Errorf("taking %d %q toys from inventory: %w", amount, toyIdent, err)
+			return fmt.Errorf("taking %d %q toys from inventory: %w", amount, toyIdent, err)
 		}
 	}
 
-	jsonDataForOrder, err := json.Marshal(map[string]any{"items": itemsMap})
+	if err := tx.Commit(); err != nil {
+		return fmt.Errorf("error commiting inventory changes to db: %w", err)
+	}
+
+	return nil
+}
+
+func (self *Shop) CreateReceipt(ctx context.Context, order ShopOrderForm) (OrderReciept, error) {
+	tx, err := self.DB.BeginTx(ctx, nil)
+	if err != nil {
+		return OrderReciept{}, fmt.Errorf("begining db tansaction: %w", err)
+	}
+	repoWithTx := self.Repo.WithTx(tx)
+	jsonDataForOrder, err := json.Marshal(order)
 	if err != nil {
 		panic(err)
 	}

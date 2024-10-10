@@ -1,0 +1,18 @@
+CREATE TABLE toys (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  identifier TEXT UNIQUE NOT NULL,
+  available INTEGER NOT NULL CHECK(available >= 0),
+  json_data TEXT
+)
+
+CREATE TABLE customers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+)
+
+CREATE TABLE orders (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  customer_id INTEGER NOT NULL,
+  json_data TEXT NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(id)
+)

@@ -1,0 +1,13 @@
+version: "2"
+sql:
+  - engine: "sqlite"
+    queries: "pkg/sql/queries/"
+    schema: "pkg/sql/schema.sql"
+    gen:
+      go:
+        package: "sqlc"
+        out: "pkg/sql/sqlc"
+        emit_db_tags: true
+        emit_json_tags: true
+        emit_enum_valid_method: true
+        emit_prepared_queries: true

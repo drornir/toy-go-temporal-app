@@ -213,6 +213,54 @@
         }
       }
     },
+    "go-task@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#go-task",
+      "source": "devbox-search",
+      "version": "3.38.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6fnjga1f6y9yw0xfa7bqq48mk4wnwj60-go-task-3.38.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6fnjga1f6y9yw0xfa7bqq48mk4wnwj60-go-task-3.38.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/y00rivpjziw0zpzacdxjmrs5i28d7grf-go-task-3.38.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/y00rivpjziw0zpzacdxjmrs5i28d7grf-go-task-3.38.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/kc0zm9kgsraznqyns5jqv0dixfgk6fm7-go-task-3.38.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/kc0zm9kgsraznqyns5jqv0dixfgk6fm7-go-task-3.38.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6fya93gcf8sla6npxp99rnbvyj6pmnr5-go-task-3.38.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6fya93gcf8sla6npxp99rnbvyj6pmnr5-go-task-3.38.0"
+        }
+      }
+    },
     "go@1": {
       "last_modified": "2024-09-10T15:01:03Z",
       "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#go_1_23",
@@ -258,6 +306,198 @@
             }
           ],
           "store_path": "/nix/store/mi0ybwsm6pmxzv9hsm6bcbqaq1pkf8wh-go-1.23.1"
+        }
+      }
+    },
+    "gofumpt@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#gofumpt",
+      "source": "devbox-search",
+      "version": "0.7.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/whr9iqhcmm4k96zqm0n6xjnnrvmc0y96-gofumpt-0.7.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/whr9iqhcmm4k96zqm0n6xjnnrvmc0y96-gofumpt-0.7.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bhif5laj89grkmxw14h87w0gx4jrgyqq-gofumpt-0.7.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/bhif5laj89grkmxw14h87w0gx4jrgyqq-gofumpt-0.7.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/476qilyjbv63r97zkqfy95g66hkkdjr3-gofumpt-0.7.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/476qilyjbv63r97zkqfy95g66hkkdjr3-gofumpt-0.7.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qi57rmvdiad8laqcn4wpciinh9kldk10-gofumpt-0.7.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qi57rmvdiad8laqcn4wpciinh9kldk10-gofumpt-0.7.0"
+        }
+      }
+    },
+    "sqlc@latest": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#sqlc",
+      "source": "devbox-search",
+      "version": "1.27.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h4r78fip8gpa04kyf2dxcky71k9qbmix-sqlc-1.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/h4r78fip8gpa04kyf2dxcky71k9qbmix-sqlc-1.27.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/hdihdxgwa6apjm9p1li6ks78r7j483yq-sqlc-1.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/hdihdxgwa6apjm9p1li6ks78r7j483yq-sqlc-1.27.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2cyw7j2bslcllc6xpmiygid935mx2mfl-sqlc-1.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2cyw7j2bslcllc6xpmiygid935mx2mfl-sqlc-1.27.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pph12znxya2nh4kxv2hj5asxdjh5lzvb-sqlc-1.27.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/pph12znxya2nh4kxv2hj5asxdjh5lzvb-sqlc-1.27.0"
+        }
+      }
+    },
+    "temporal-cli@1": {
+      "last_modified": "2024-09-10T15:01:03Z",
+      "resolved": "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269#temporal-cli",
+      "source": "devbox-search",
+      "version": "1.18.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/8vf2s0lyrhpxz1wcl4i7fpnc92vwvd6v-temporal-cli-1.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/8vf2s0lyrhpxz1wcl4i7fpnc92vwvd6v-temporal-cli-1.18.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/knk7nly77naaqin134bll8j14nsf6r10-temporal-cli-1.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/knk7nly77naaqin134bll8j14nsf6r10-temporal-cli-1.18.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/xmj9x4pgpznnz6z96g2zdnwy6g6ywqdb-temporal-cli-1.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/xmj9x4pgpznnz6z96g2zdnwy6g6ywqdb-temporal-cli-1.18.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/7hydlyaqkqifk4bmmi6wgc1qpzzbna2d-temporal-cli-1.18.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/7hydlyaqkqifk4bmmi6wgc1qpzzbna2d-temporal-cli-1.18.1"
+        }
+      }
+    },
+    "temporal@1": {
+      "last_modified": "2024-09-27T09:34:34Z",
+      "resolved": "github:NixOS/nixpkgs/e0f477a570df7375172a08ddb9199c90853c63f0#temporal",
+      "source": "devbox-search",
+      "version": "1.25.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9ck69jggfkimllndx9dajm7vcvflb2wy-temporal-1.25.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9ck69jggfkimllndx9dajm7vcvflb2wy-temporal-1.25.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/d56b9ljgcdvjsp3wp75271p3dlqiw4jc-temporal-1.25.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/d56b9ljgcdvjsp3wp75271p3dlqiw4jc-temporal-1.25.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/9rv1bk5krk8acl5l4kn8k42q6z2jclxh-temporal-1.25.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/9rv1bk5krk8acl5l4kn8k42q6z2jclxh-temporal-1.25.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/d3cwdpjpnv84qqzgn8l2jmlaayf4ydbj-temporal-1.25.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/d3cwdpjpnv84qqzgn8l2jmlaayf4ydbj-temporal-1.25.0"
         }
       }
     }

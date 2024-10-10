@@ -4,7 +4,12 @@
     "direnv@latest",
     "go@1",
     "gnumake@latest",
-    "coreutils-full@latest"
+    "coreutils-full@latest",
+    "temporal-cli@1",
+    "temporal@1",
+    "go-task@latest",
+    "gofumpt@latest",
+    "sqlc@latest"
   ],
   "shell": {
     "init_hook": [

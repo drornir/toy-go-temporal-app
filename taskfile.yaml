@@ -1,0 +1,14 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  dev:temporal:
+    aliases: [dt]
+    cmds:
+      - cmd: mkdir bin -p
+        silent: true
+      - cmd: temporal server start-dev --ui-port 8080 --db-filename bin/temporal-dev.db
+
+  sqlc:
+    cmds:
+      - sqlc generate

@@ -9,16 +9,12 @@ import (
 
 func New(db *sql.DB) *App {
 	return &App{
-		db: db,
-		shop: &toys.Shop{
-			DB:   db,
-			Repo: sqlc.New(db),
-		},
+		Shop: &toys.Shop{DB: db, Repo: sqlc.New(db)},
 	}
 }
 
-// /
 type App struct {
-	db   *sql.DB
-	shop *toys.Shop
+	Shop *toys.Shop
+
+	stopChan chan struct{}
 }

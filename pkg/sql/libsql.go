@@ -1,14 +1,13 @@
 package sql
 
 import (
-	"context"
 	"database/sql"
 	"fmt"
 
 	_ "github.com/tursodatabase/go-libsql"
 )
 
-func ConnectLibsqlDev(ctx context.Context) (*sql.DB, error) {
+func ConnectLibsqlDev() (*sql.DB, error) {
 	dbName := "file:./bin/toys-dev.db"
 	db, err := sql.Open("libsql", dbName)
 	if err != nil {
